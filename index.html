@@ -7,8 +7,8 @@
   <style>
     body {
       margin: 0;
-      padding: 6rem;
-      background: #000000;
+      padding: 3rem;
+      background: #444444;
       font-family: 'JetBrains Mono', monospace;
       color: #ffffff;
     }
@@ -21,11 +21,13 @@
     }
     h1 {
       margin-bottom: 0.25rem;
-      font-size: clamp(1.3rem, 4vw, 2.0rem)
+      font-size: clamp(1.3rem, 4vw, 2.0rem);
     }
     p {
       line-height: 1.6;
-      background:  #444444;
+      font-size: clamp(0.5 rem, 4vw, 1.0rem);
+      background:  #000000;
+      padding: 1rem;
       margin-bottom: 1.5rem;
     }
     button {
@@ -55,7 +57,14 @@
     <h1>SamPeterson.xyz</h1>
     <h1>Portfolio</h1>
   </header>
-  <p>This is a placeholder page generated with an embedded script. Click the button below to update the message.</p>
+  <p>
+    Welcome to my Portfolio! <br/> 
+    This is where you can find 
+    all of the information about the Android Developer, Sam Peterson.
+    I am currently working on a few personal projects. 
+    Some of which are embedded in this website.
+    See if you can find them all!
+  </p>
   <button id="actionButton">Show the current time</button>
   <div id="message"></div>
   <br/>
