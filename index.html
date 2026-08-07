@@ -81,6 +81,9 @@
   <button id="actionButton">Show the current time</button>
   <div id="message"></div>
   <br/>
+  <canvas id="micCanvas" width="800" height="600" style="border:1px solid #000000;">
+
+  </canvas>
   <script>
     const button = document.getElementById('actionButton');
     const message = document.getElementById('message');
@@ -89,6 +92,81 @@
       const now = new Date();
       message.textContent = `Current local time is ${now.toLocaleTimeString()}.`;
     });
+
+    const canvas = document.getElementById('micCanvas');
+    ctx = canvas.getContext("2d")
+    ctx.beginPath();
+    ctx.arc(
+        rotateX,
+        rotateY,
+        20,
+        0,
+        Math.PI * 2
+    );
+    ctx.fill();
+  </script>
+
+  <script type="py">
+    import js
+    print("Hello from Python!")
+    canvas.coords(
+      dots[i],
+      rotateX - 20,
+      rotateY - 20,
+      rotateX + 20,
+      rotateY + 20
+    )
+
+    let rotationModifier = 0;
+    let smoothedVolume = 0;
+
+    function animate() {
+
+        ctx.clearRect(
+            0,
+            0,
+            canvas.width,
+            canvas.height
+        );
+
+        rotationModifier += 0.1;
+
+        let radius = 25 + smoothedVolume;
+
+        if (radius > 200) {
+            radius = 180;
+        }
+
+        for (let i = 0; i < 50; i++) {
+
+            let rotateX =
+                400 +
+                (radius / 50) *
+                i *
+                Math.cos(i + rotationModifier);
+
+            let rotateY =
+                300 +
+                (radius / 50) *
+                i *
+                Math.sin(i + rotationModifier);
+
+            ctx.beginPath();
+            ctx.arc(
+                rotateX,
+                rotateY,
+                20,
+                0,
+                Math.PI * 2
+            );
+
+            ctx.fill();
+        }
+
+        requestAnimationFrame(animate);
+    }
+
+  animate();
   </script>
 </body>
 </html>
