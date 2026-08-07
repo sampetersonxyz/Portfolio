@@ -99,7 +99,7 @@
 
   <script type="module" src="https://pyscript.net/releases/2025.7.1/core.js"></script>
   <script type="py">
-    from js import document, window
+    from js import document, window, console
     import math
     
     print("Python code is running!")
@@ -109,16 +109,23 @@
     x = canvas.width / 2
     y = canvas.height / 2
 
+    frame = 0
     rotation_modifier = 0
+    smoothed_volume = 0
     dots = range(50)
 
     def animate():
       global rotation_modifier
       global smoothed_volume
+      global frame
 
       rotation_modifier += 0.1
+      smoothed_volume += 10 
 
-      radius = 100
+      if(smoothed_volume > 100):
+          smoothed_volume = 0
+
+      radius = 25 + smoothed_volume
 
       # Clear HTML canvas
       ctx.clearRect(0, 0, canvas.width, canvas.height)
