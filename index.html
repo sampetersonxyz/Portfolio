@@ -146,6 +146,7 @@
               2 * math.pi
           )
           ctx.fill()
+      window.requestAnimationFrame(animation_callback)
 
     animation_callback = create_proxy(animate)
     window.requestAnimationFrame(animation_callback)
