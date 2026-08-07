@@ -93,80 +93,49 @@
       message.textContent = `Current local time is ${now.toLocaleTimeString()}.`;
     });
 
-    const canvas = document.getElementById('micCanvas');
-    ctx = canvas.getContext("2d")
-    ctx.beginPath();
-    ctx.arc(
-        rotateX,
-        rotateY,
-        20,
-        0,
-        Math.PI * 2
-    );
-    ctx.fill();
   </script>
 
   <script type="py">
-    import js
-    print("Hello from Python!")
-    canvas.coords(
-      dots[i],
-      rotateX - 20,
-      rotateY - 20,
-      rotateX + 20,
-      rotateY + 20
-    )
+    from js import document, window
+    import math
+    
+    canvas = document.getElementById('micCanvas')
+    ctx = canvas.getContext('2d')
+    x = canvas.width / 2
+    y = canvas.height / 2
 
-    let rotationModifier = 0;
-    let smoothedVolume = 0;
+    rotation_modifier = 0
+    dots = range(50)
+    animate()
 
-    function animate() {
+    def animate():
+      global rotation_modifier
+      global smoothed_volume
 
-        ctx.clearRect(
-            0,
-            0,
-            canvas.width,
-            canvas.height
-        );
+      rotation_modifier += 0.1
 
-        rotationModifier += 0.1;
+      radius = 100
 
-        let radius = 25 + smoothedVolume;
+      # Clear HTML canvas
+      ctx.clearRect(0, 0, canvas.width, canvas.height)
 
-        if (radius > 200) {
-            radius = 180;
-        }
+      for i in range(len(dots)):
 
-        for (let i = 0; i < 50; i++) {
+          rotateX = x + (radius / len(dots)) * i * math.cos(i + rotation_modifier)
+          rotateY = y + (radius / len(dots)) * i * math.sin(i + rotation_modifier)
 
-            let rotateX =
-                400 +
-                (radius / 50) *
-                i *
-                Math.cos(i + rotationModifier);
+          ctx.beginPath()
+          ctx.arc(
+              rotateX,
+              rotateY,
+              20,
+              0,
+              2 * math.pi
+          )
+          ctx.fill()
 
-            let rotateY =
-                300 +
-                (radius / 50) *
-                i *
-                Math.sin(i + rotationModifier);
+      window.requestAnimationFrame(animate)
 
-            ctx.beginPath();
-            ctx.arc(
-                rotateX,
-                rotateY,
-                20,
-                0,
-                Math.PI * 2
-            );
-
-            ctx.fill();
-        }
-
-        requestAnimationFrame(animate);
-    }
-
-  animate();
   </script>
 </body>
 </html>
