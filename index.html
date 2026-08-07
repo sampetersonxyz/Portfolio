@@ -121,6 +121,7 @@
 
       rotation_modifier += 0.1
       smoothed_volume += 10 
+      print ("frame: ", frame, " smoothed_volume: ", smoothed_volume)
 
       if(smoothed_volume > 100):
           smoothed_volume = 0
@@ -148,6 +149,7 @@
       window.requestAnimationFrame(animate)
 
     animate()
+
   </script>
 </body>
 </html>
