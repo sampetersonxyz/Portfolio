@@ -113,6 +113,7 @@
     frame = 0
     rotation_modifier = 0
     smoothed_volume = 0
+    increasing = True
     dots = range(50)
 
     def animate(timestamp=None):
@@ -121,11 +122,16 @@
       global frame
 
       rotation_modifier += 0.1
-      smoothed_volume += 10 
       print ("frame: ", frame, " smoothed_volume: ", smoothed_volume)
 
-      if(smoothed_volume > 100):
-          smoothed_volume = 0
+      if(increasing):
+        smoothed_volume += 1 
+        if(smoothed_volume > 200):
+          increasing = False;
+      else:
+        smoothed_volume -= 1
+        if(smoothed_volume < 1):
+          increasing = True;
 
       radius = 25 + smoothed_volume
 
