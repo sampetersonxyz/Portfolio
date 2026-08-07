@@ -100,6 +100,7 @@
   <script type="module" src="https://pyscript.net/releases/2025.7.1/core.js"></script>
   <script type="py">
     from js import document, window, console
+    from pyodide.ffi import create_proxy
     import math
     
     print("Python code is running!")
@@ -114,7 +115,7 @@
     smoothed_volume = 0
     dots = range(50)
 
-    def animate():
+    def animate(timestamp=None):
       global rotation_modifier
       global smoothed_volume
       global frame
@@ -146,9 +147,9 @@
           )
           ctx.fill()
 
-      window.requestAnimationFrame(animate)
+    animation_callback = create_proxy(animate)
+    window.requestAnimationFrame(animation_callback)
 
-    animate()
 
   </script>
 </body>
