@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Temporary Portfolio</title>
+  <title>Portfolio</title>
   <style>
     body {
       margin: 0;
@@ -54,6 +54,29 @@
       height: auto;
       display: block;
     }
+    #gallery {
+      width: 80%;
+      display: flex;
+      flex-wrap: wrap;
+      background-color: #000000;
+      padding: 2rem;
+    }
+    #gallery img{
+      width: calc(50% - 0.5rem);;
+      height: auto;
+      display: auto;
+      object-fit: cover;
+      gap: 1rem;
+    }
+    .project {
+    width: 100%;
+    margin: auto;
+    padding: 2rem;
+    background-color: #3300ff;
+    border-radius: 15px;
+    box-sizing: border-box;
+}
+
   </style>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -92,9 +115,41 @@
     <canvas id="micCanvas""></canvas>
     <br/>
   </p>
+  <p>
+    <span style = "color: cyan;">GutiarApp</span> 
+    <br/> 
+    <br/>
+    This is the basic design of an inprogress app that should help me
+    learn how to play the guitar. I have been practicing.
+    <br/>
+    <br/>
+    <span style = "color: orange;"> //TODO: Compose Embedded Render + download</span> 
+    <br/>
+    <br/>
+    <img src="images/Guitar1.png" alt="Guitar App Screenshot" width="30%">
+    <br/>
+  </p>
+  <div class="project">
+    <p>
+        <span style="color: cyan;">V!s!on</span>
+        <br/>
+        <br/>
+        Independent strategy game. Turn based game on a hex grid.
+        All movement is based around what pieces can see
+        <span style="color: orange;">//TODO: Playable Version Online</span>
+    </p>
+
+    <div id="gallery">
+        <img src="images/image1.png" alt="Image 1">
+        <img src="images/image2.jpg" alt="Image 2">
+        <img src="images/image3.jpg" alt="Image 3">
+        <img src="images/image4.jpg" alt="Image 4">
+    </div>
+</div>
+  <!-- 
   <button id="actionButton">Show the current time</button>
   <div id="message"></div>
-  <br/>
+  -->
 
   </canvas>
   <script>
