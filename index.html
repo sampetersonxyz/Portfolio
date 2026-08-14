@@ -142,25 +142,25 @@
     </p>
     <div id="gallery">
 
-        <button id="gallery-prev" class="gallery-button">❮</button>
+    <button id="gallery-prev" class="gallery-button">❮</button>
 
-        <div id="gallery-content">
+    <div id="gallery-content">
 
-            <img id="gallery-image"
-                src=""
-                alt="Gallery Image">
+        <img id="gallery-image"
+            src=""
+            alt="Gallery Image">
 
-            <div id="gallery-counter">
-                Loading images...
-            </div>
-
+        <div id="gallery-counter">
+            Loading images...
         </div>
-
-        <button id="gallery-next" class="gallery-button">❯</button>
 
     </div>
 
-    <script type="py" src="python/gallery.py"></script>
+    <button id="gallery-next" class="gallery-button">❯</button>
+
+  </div>
+
+  <script type="py" src="python/gallery.py"></script>
 </div>
 
 <p>
@@ -193,16 +193,6 @@
   -->
 
   </canvas>
-  <script>
-    const button = document.getElementById('actionButton');
-    const message = document.getElementById('message');
-
-    button.addEventListener('click', () => {
-      const now = new Date();
-      message.textContent = `Current local time is ${now.toLocaleTimeString()}.`;
-    });
-
-  </script>
 
   <link rel="stylesheet" href="https://pyscript.net/releases/2025.7.1/core.css">
 

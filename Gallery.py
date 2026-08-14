@@ -1,5 +1,4 @@
-from pyscript import document
-from pyodide.http import pyfetch
+from pyscript import document, fetch
 
 
 # ============================================================
@@ -36,59 +35,77 @@ next_button = document.querySelector("#gallery-next")
 
 
 # ============================================================
-# Get Images From GitHub
+# Load Images From GitHub
 # ============================================================
 
 async def load_images():
 
     global images
 
-    response = await pyfetch(GITHUB_API_URL)
+    print("Loading images from:")
+    print(GITHUB_API_URL)
 
-    if not response.ok:
-        print("Failed to load images from GitHub")
-        print("HTTP status:", response.status)
-        return
+    try:
 
-    files = await response.json()
+        response = await fetch(GITHUB_API_URL)
 
-    # Only include image files
-    valid_extensions = (
-        ".png",
-        ".jpg",
-        ".jpeg",
-        ".gif",
-        ".webp"
-    )
+        print("GitHub response:", response.status)
 
-    images = []
+        if not response.ok:
+            print("GitHub API request failed.")
+            gallery_counter.innerText = (
+                f"GitHub error: {response.status}"
+            )
+            return
 
-    for file in files:
+        files = await response.json()
 
-        if file["type"] != "file":
-            continue
+        print("Files returned:", len(files))
 
-        filename = file["name"].lower()
+        valid_extensions = (
+            ".png",
+            ".jpg",
+            ".jpeg",
+            ".gif",
+            ".webp"
+        )
 
-        if filename.endswith(valid_extensions):
+        images.clear()
 
-            images.append(file["download_url"])
+        for file in files:
 
+            if file["type"] != "file":
+                continue
 
-    # Sort images alphabetically
-    images.sort()
+            filename = file["name"].lower()
 
+            if filename.endswith(valid_extensions):
 
-    # Display first image
-    if len(images) > 0:
+                images.append(
+                    file["download_url"]
+                )
+
+        images.sort()
+
+        print("Images found:", len(images))
+
+        if len(images) == 0:
+
+            gallery_counter.innerText = "No images found"
+            return
+
         show_image(0)
 
-    else:
-        gallery_counter.innerText = "No images found"
+    except Exception as error:
+
+        print("Gallery error:")
+        print(error)
+
+        gallery_counter.innerText = "Error loading images"
 
 
 # ============================================================
-# Display Image
+# Show Image
 # ============================================================
 
 def show_image(index):
@@ -146,22 +163,19 @@ def next_image(event):
 
 
 # ============================================================
-# Button Events
+# Events
 # ============================================================
 
 previous_button.onclick = previous_image
 next_button.onclick = next_image
 
-
-# ============================================================
-# Clicking Image
-# ============================================================
-
 gallery_image.onclick = next_image
 
 
 # ============================================================
-# Start Gallery
+# Start
 # ============================================================
 
 gallery_counter.innerText = "Loading images..."
+
+await load_images()
