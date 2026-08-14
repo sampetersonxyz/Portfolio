@@ -7,7 +7,7 @@ from pyscript import document, fetch
 
 GITHUB_USER = "sampetersonxyz"
 GITHUB_REPO = "Portfolio"
-IMAGE_FOLDER = "images"
+IMAGE_FOLDER = "images/vision"
 
 GITHUB_API_URL = (
     f"https://api.github.com/repos/"

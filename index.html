@@ -62,7 +62,7 @@
       padding: 2rem;
     }
     #gallery img{
-      width: calc(50% - 0.5rem);;
+      width: calc(100% - 0.5rem);;
       height: auto;
       display: auto;
       object-fit: cover;
@@ -75,7 +75,24 @@
     background-color: #3300ff;
     border-radius: 15px;
     box-sizing: border-box;
-}
+  }
+  .gallery-button {
+    background: transparent;
+    border: none;
+
+    font-size: 50px;
+    color: white;
+
+    cursor: pointer;
+
+    padding: 20px;
+
+    transition: 0.2s;
+  }
+
+  .gallery-button:hover {
+      transform: scale(1.2);
+  }
 
   </style>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -142,7 +159,6 @@
     </p>
     <div id="gallery">
 
-    <button id="gallery-prev" class="gallery-button">❮</button>
 
     <div id="gallery-content">
 
@@ -156,11 +172,12 @@
 
     </div>
 
+    <button id="gallery-prev" class="gallery-button">❮</button>
     <button id="gallery-next" class="gallery-button">❯</button>
 
   </div>
 
-  <script type="py" src="python/gallery.py"></script>
+  <script type="py" src="Gallery.py"></script>
 </div>
 
 <p>
