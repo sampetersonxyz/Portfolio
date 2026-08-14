@@ -3,13 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
   <title>Portfolio</title>
   <style>
     body {
       margin: 0;
-      padding: 3rem;
+      padding: 1.5rem;
       background: #444444;
-      font-family: 'JetBrains Mono', monospace;
+      font-family: "Geist Mono", monospace;
       color: #ffffff;
     }
     header {
@@ -19,7 +24,7 @@
         color: #ffffff;
     }
     h1 {
-      font-family: "Segoe UI" ,serif;
+      font-family: "Segoe UI", Arial, sans-serif;
       margin-bottom: 0.25rem;
       font-weight: 100;
       font-size: clamp(1.3rem, 4vw, 2.0rem);
@@ -55,11 +60,11 @@
       display: block;
     }
     #gallery {
-      width: 80%;
+      width: 90%;
       display: flex;
+      margin: auto;
       flex-wrap: wrap;
       background-color: #000000;
-      padding: 2rem;
     }
     #gallery img{
       width: calc(100% - 0.5rem);;
@@ -71,8 +76,7 @@
     .project {
     width: 100%;
     margin: auto;
-    padding: 2rem;
-    background-color: #3300ff;
+    background-color: #000000;
     border-radius: 15px;
     box-sizing: border-box;
   }
@@ -157,25 +161,24 @@
         <br/>
         <span style="color: orange;">//TODO: Playable Version Online</span>
     </p>
+
     <div id="gallery">
+      <div id="gallery-content">
 
+          <img id="gallery-image"
+              src=""
+              alt="Gallery Image">
 
-    <div id="gallery-content">
+          <div id="gallery-counter">
+              Loading images...
+          </div>
 
-        <img id="gallery-image"
-            src=""
-            alt="Gallery Image">
+      </div>
 
-        <div id="gallery-counter">
-            Loading images...
-        </div>
-
+      <button id="gallery-prev" class="gallery-button">❮</button>
+      <button id="gallery-next" class="gallery-button">❯</button>
     </div>
 
-    <button id="gallery-prev" class="gallery-button">❮</button>
-    <button id="gallery-next" class="gallery-button">❯</button>
-
-  </div>
 
   <script type="py" src="Gallery.py"></script>
 </div>
