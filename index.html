@@ -11,12 +11,19 @@
   <title>Portfolio</title>
   <style>
     body {
-      margin: 0;
+      margin: 8rem;
       padding: 1.5rem;
       background: #444444;
       font-family: "Geist Mono", monospace;
       color: #ffffff;
     }
+    /* Mobile */
+    @media (max-width: 768px) { 
+    body {
+      margin: 1rem;
+    }
+}
+        
     header {
         display: flex;
         justify-content: space-between;
@@ -252,6 +259,7 @@
 
   <link rel="stylesheet" href="https://pyscript.net/releases/2025.7.1/core.css">
 
+  <script type="text/javascript"src="DeviceUtils.js"></script>
   <script type="module" src="https://pyscript.net/releases/2025.7.1/core.js"></script>
   <script type="py" src="MicAnimationWeb.py"></script>
 
