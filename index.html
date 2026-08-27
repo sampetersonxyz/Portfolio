@@ -107,11 +107,12 @@
   .gallery-button:hover {
       transform: scale(1.2);
   }
-  .play-button {
+  .dynamic-button {
       padding: 15px 30px;
       font-size: 20px;
       font-weight: bold;
-      border: none;
+      background-color: #000033;
+      border: 2px solid #ffffff;
       border-radius: 8px;
       cursor: pointer;
   }
@@ -156,8 +157,12 @@
     <br/>
     <span style = "color: orange;"> //TODO: Live Reaction to mic on website + download </span> 
     <br/>
-    <br/>
-    <a href="https://github.com/petesamerson/StreamAssist">Download Link</a>
+    <button class="dynamic-button" onclick="window.location.href='https://github.com/petesamerson/StreamAssist'">
+      Download Link
+    </button>
+    <button class="dynamic-button" onclick="window.location.href='https://github.com/petesamerson/StreamAssist'">
+      In-Progress Code
+    </button>
     <br/>
     <br/>
     <img src="images/Screenshot_1.jpg" alt="Guitar App Screenshot" width="80%">
@@ -177,7 +182,9 @@
     <span style = "color: orange;"> //TODO: Compose Embedded Render + download</span> 
     <br/>
     <br/>
-    <a href="https://github.com/sampetersonxyz/MusicRender">In-Progress Code</a>
+    <button class="dynamic-button" onclick="window.location.href='https://github.com/petesamerson/MusicRender'">
+      In-Progress Code
+    </button>
     <br/>
     <br/>
     <iframe 
@@ -202,11 +209,12 @@
         <br/>
         <span style="color: orange;">//TODO: Playable Version Online</span>
         <br/>
-        <button class="play-button" onclick="window.location.href='https://petesamerson.github.io/V-s-on/'">
+        <button class="dynamic-button" onclick="window.location.href='https://petesamerson.github.io/V-s-on/'">
           Play With Alpha Pieces
         </button>
-        <br/>
-        <a href="https://github.com/petesamerson/V-s-on">In-Progress Code</a>
+        <button class="dynamic-button" onclick="window.location.href='https://github.com/petesamerson/V-s-on'">
+          In-Progress Code
+        </button>
         <br/>
     </p>
 
