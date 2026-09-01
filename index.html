@@ -57,7 +57,8 @@
       font-size: 1rem;
     }
     button:hover {
-      background: #2563eb;
+      background: #00ffff;
+      color: #000000;
     }
     #message {
       margin-top: 1.25rem;
@@ -111,8 +112,8 @@
       padding: 15px 30px;
       font-size: 20px;
       font-weight: bold;
-      background-color: #000033;
-      border: 2px solid #ffffff;
+      background-color: #000000;
+      border: 2px solid #00ffff;
       border-radius: 8px;
       cursor: pointer;
   }
@@ -151,8 +152,8 @@
     <br/>
     This is a animation I made for livestreaming that reacts to the user's 
     microphone. It also maintains a queue and shows the current spotify song. 
-    The ebedded code is written in Python and uses the PyScript 
-    library to run in the browser.
+    The ebedded code is written in <span style = "color: rgb(255, 255, 0);"> Python </span> 
+    and uses the PyScript library to run in the browser.
     <br/>
     <br/>
     <span style = "color: orange;"> //TODO: Live Reaction to mic on website + download </span> 
@@ -176,10 +177,13 @@
     <br/> 
     <r/>
     This is the basic design of an inprogress app that should help me
-    learn how to play the guitar. I have been practicing.
+    learn how to play the guitar. I have been practicing. Written in
+    <span style = "color: rgb(255, 255, 0);"> Kotlin and Android Compose</span>  
+    the code for rendering cords is embedded below using the 
+    <span style = "color: rgb(255, 255, 0);"> Kotlin Multiplatform</span>
     <br/>
     <br/>
-    <span style = "color: orange;"> //TODO: Compose Embedded Render + download</span> 
+    <span style = "color: orange;"> //TODO: Interactable Mutliplatform Html Render</span> 
     <br/>
     <br/>
     <button class="dynamic-button" onclick="window.location.href='https://github.com/petesamerson/MusicRender'">
@@ -250,6 +254,10 @@
   <span style = "color: orange;"> //TODO: Full Gallery + More Timelapses</span> 
   <br/>
   <br/>
+  <video controls width="100%">
+    <source src="https://pub-ee0c46df897c4140bc30ae14f1233d14.r2.dev/Unstable%20The%20Timelapse.mp4" type="video/mp4">
+    Your browser does not support the video element.
+  </video>
   <iframe
     width="100%"
     height="500"
