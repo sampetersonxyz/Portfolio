@@ -8,9 +8,10 @@ from pyscript import document, fetch
 GITHUB_USER = "sampetersonxyz"
 GITHUB_REPO = "Portfolio"
 
-script = document.currentScript
-IMAGE_FOLDER = script.getAttribute("data-folder")
 
+script = document.currentScript
+
+IMAGE_FOLDER = script.getAttribute("data-folder")
 
 GITHUB_API_URL = (
     f"https://api.github.com/repos/"
@@ -19,22 +20,24 @@ GITHUB_API_URL = (
 
 
 # ============================================================
+# Find This Gallery
+# ============================================================
+
+gallery = script.previousElementSibling
+
+gallery_image = gallery.querySelector(".gallery-image")
+gallery_counter = gallery.querySelector(".gallery-counter")
+
+previous_button = gallery.querySelector(".gallery-prev")
+next_button = gallery.querySelector(".gallery-next")
+
+
+# ============================================================
 # Gallery State
 # ============================================================
 
 images = []
 current_image = 0
-
-
-# ============================================================
-# HTML Elements
-# ============================================================
-
-gallery_image = document.querySelector("#gallery-image")
-gallery_counter = document.querySelector("#gallery-counter")
-
-previous_button = document.querySelector("#gallery-prev")
-next_button = document.querySelector("#gallery-next")
 
 
 # ============================================================
