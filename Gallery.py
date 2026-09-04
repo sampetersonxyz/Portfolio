@@ -9,6 +9,7 @@ GITHUB_USER = "sampetersonxyz"
 GITHUB_REPO = "Portfolio"
 
 
+path = f"{folder}/images{index}.png"
 script = document.currentScript
 
 IMAGE_FOLDER = script.getAttribute("data-folder")
@@ -88,7 +89,7 @@ async def load_images():
             if filename.endswith(valid_extensions):
 
                 images.append(
-                    file["download_url"]
+                    f"https://sampetersonxyz.github.io/Portfolio/{IMAGE_FOLDER}/{file['name']}"
                 )
 
         images.sort()
