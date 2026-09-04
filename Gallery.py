@@ -125,7 +125,12 @@ def show_image(index):
 
     current_image = index
 
+    print("Showing image:", images[current_image])
+    print("Gallery image element:", gallery_image)
+
     gallery_image.src = images[current_image]
+
+    print("Image src after setting:", gallery_image.src)
 
     gallery_counter.innerText = (
         f"{current_image + 1} / {len(images)}"
