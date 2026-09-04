@@ -1,4 +1,5 @@
 from pyscript import document, fetch
+from js import window
 
 
 # ============================================================
@@ -9,8 +10,9 @@ GITHUB_USER = "sampetersonxyz"
 GITHUB_REPO = "Portfolio"
 
 
-path = f"{folder}/images{index}.png"
+
 script = document.currentScript
+folder = script.getAttribute("data-folder")
 
 IMAGE_FOLDER = script.getAttribute("data-folder")
 
