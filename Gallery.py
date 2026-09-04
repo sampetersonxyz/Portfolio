@@ -90,7 +90,7 @@ async def load_images():
 
             if filename.endswith(valid_extensions):
                 images.append(
-                    f"/Portfolio/{IMAGE_FOLDER}/{file['name']}"
+                    f"/{IMAGE_FOLDER}/{file['name']}"
                 )
 
         images.sort()
