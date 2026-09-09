@@ -32,12 +32,12 @@ def animate(timestamp=None):
 
     if(increasing):
         smoothed_volume += 1 
-    if(smoothed_volume > canvas.width*0.35):
-        increasing = False;
+        if(smoothed_volume > canvas.width*0.35):
+            increasing = False;
     else:
         smoothed_volume -= 1
-    if(smoothed_volume < (canvas.width*0.01)):
-        increasing = True;
+        if(smoothed_volume < (canvas.width*0.01)):
+            increasing = True;
 
     radius = canvas.width*0.1 + smoothed_volume
 
