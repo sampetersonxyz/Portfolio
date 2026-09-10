@@ -1,5 +1,8 @@
 from pyscript import document, fetch
 from js import window
+from js import document, window
+from pyodide.ffi import create_proxy
+from urllib.parse import urlparse, parse_qs
 
 
 # ============================================================
@@ -11,15 +14,24 @@ GITHUB_REPO = "Portfolio"
 
 
 
-script = document.currentScript
-folder = script.getAttribute("data-folder")
+# Get this script's URL
+script_url = window.document.currentScript.src
 
-IMAGE_FOLDER = script.getAttribute("data-folder")
+# Get folder from URL
+params = parse_qs(urlparse(script_url).query)
+
+IMAGE_FOLDER = params.get("folder", [""])[0]
+
+print("IMAGE_FOLDER:", IMAGE_FOLDER)
 
 GITHUB_API_URL = (
     f"https://api.github.com/repos/"
     f"{GITHUB_USER}/{GITHUB_REPO}/contents/{IMAGE_FOLDER}"
 )
+
+print("GITHUB_API_URL:", GITHUB_API_URL)
+
+
 
 
 # ============================================================
