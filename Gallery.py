@@ -73,10 +73,10 @@ async def load_images():
 
         valid_extensions = (
             ".png",
-            ".jpg",
-            ".jpeg",
-            ".gif",
-            ".webp"
+            # ".jpg",
+            # ".jpeg",
+            # ".gif",
+            # ".webp"
         )
 
         images.clear()
