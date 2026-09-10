@@ -96,17 +96,21 @@ async def main():
         await setup_gallery(gallery)
 
 main()
-# ============================================================
-# Find This Gallery
-# ============================================================
 
-gallery = script.previousElementSibling
+import asyncio
+asyncio.ensure_future(main())
 
-gallery_image = gallery.querySelector(".gallery-image")
-gallery_counter = gallery.querySelector(".gallery-counter")
+# # ============================================================
+# # Find This Gallery
+# # ============================================================
 
-previous_button = gallery.querySelector(".gallery-prev")
-next_button = gallery.querySelector(".gallery-next")
+# gallery = script.previousElementSibling
+
+# gallery_image = gallery.querySelector(".gallery-image")
+# gallery_counter = gallery.querySelector(".gallery-counter")
+
+# previous_button = gallery.querySelector(".gallery-prev")
+# next_button = gallery.querySelector(".gallery-next")
 
 
 # ============================================================
