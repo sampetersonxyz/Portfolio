@@ -8,21 +8,23 @@ from urllib.parse import urlparse, parse_qs
 # ============================================================
 # GitHub Repository
 # ============================================================
-
 GITHUB_USER = "sampetersonxyz"
 GITHUB_REPO = "Portfolio"
 
+scripts = document.querySelectorAll('script[type="py"][src="Gallery.py"]')
 
+IMAGE_FOLDER = ""
 
-# Get this script's URL
-script_url = window.document.currentScript.src
+for script_element in scripts:
+    folder = script_element.getAttribute("data-folder")
 
-# Get folder from URL
-params = parse_qs(urlparse(script_url).query)
+    if folder:
+        IMAGE_FOLDER = folder
+        print("IMAGE_FOLDER:", IMAGE_FOLDER)
+        break
 
-IMAGE_FOLDER = params.get("folder", [""])[0]
-
-print("IMAGE_FOLDER:", IMAGE_FOLDER)
+if not IMAGE_FOLDER:
+    print("ERROR: No image folder found")
 
 GITHUB_API_URL = (
     f"https://api.github.com/repos/"
@@ -30,9 +32,6 @@ GITHUB_API_URL = (
 )
 
 print("GITHUB_API_URL:", GITHUB_API_URL)
-
-
-
 
 # ============================================================
 # Find This Gallery
