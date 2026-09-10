@@ -95,7 +95,7 @@ async def main():
     for gallery in galleries:
         await setup_gallery(gallery)
 
-main()
+# main()
 
 import asyncio
 asyncio.ensure_future(main())
@@ -257,16 +257,16 @@ def next_image(event):
 # Events
 # ============================================================
 
-previous_button.onclick = previous_image
-next_button.onclick = next_image
+# # previous_button.onclick = previous_image
+# next_button.onclick = next_image
 
-gallery_image.onclick = next_image
+# gallery_image.onclick = next_image
 
 
 # ============================================================
 # Start
 # ============================================================
 
-gallery_counter.innerText = "Loading images..."
+# gallery_counter.innerText = "Loading images..."
 
-await load_images()
+# await load_images()
