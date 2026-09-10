@@ -47,7 +47,7 @@ async def setup_gallery(gallery):
             if file["type"] != "file":
                 continue
 
-            if file["name"].lower().endswith(".png"):
+            if file["name"].lower().endswith((".png", ".jpg", ".jpeg")):
                 images.append(
                     f"/{image_folder}/{file['name']}"
                 )
