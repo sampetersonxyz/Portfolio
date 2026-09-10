@@ -8,31 +8,94 @@ from urllib.parse import urlparse, parse_qs
 # ============================================================
 # GitHub Repository
 # ============================================================
+from pyscript import document, fetch
+
 GITHUB_USER = "sampetersonxyz"
 GITHUB_REPO = "Portfolio"
 
-scripts = document.querySelectorAll('script[type="py"][src="Gallery.py"]')
 
-IMAGE_FOLDER = ""
+async def setup_gallery(gallery):
 
-for script_element in scripts:
-    folder = script_element.getAttribute("data-folder")
+    image_folder = gallery.getAttribute("data-folder")
 
-    if folder:
-        IMAGE_FOLDER = folder
-        print("IMAGE_FOLDER:", IMAGE_FOLDER)
-        break
+    gallery_image = gallery.querySelector(".gallery-image")
+    gallery_counter = gallery.querySelector(".gallery-counter")
+    previous_button = gallery.querySelector(".gallery-prev")
+    next_button = gallery.querySelector(".gallery-next")
 
-if not IMAGE_FOLDER:
-    print("ERROR: No image folder found")
+    github_api_url = (
+        f"https://api.github.com/repos/"
+        f"{GITHUB_USER}/{GITHUB_REPO}/contents/{image_folder}"
+    )
 
-GITHUB_API_URL = (
-    f"https://api.github.com/repos/"
-    f"{GITHUB_USER}/{GITHUB_REPO}/contents/{IMAGE_FOLDER}"
-)
+    print("Loading:", github_api_url)
 
-print("GITHUB_API_URL:", GITHUB_API_URL)
+    images = []
+    current_image = 0
 
+    try:
+        response = await fetch(github_api_url)
+
+        if not response.ok:
+            gallery_counter.innerText = "Error loading images"
+            print("GitHub error:", response.status)
+            return
+
+        files = await response.json()
+
+        for file in files:
+            if file["type"] != "file":
+                continue
+
+            if file["name"].lower().endswith(".png"):
+                images.append(
+                    f"/{image_folder}/{file['name']}"
+                )
+
+        images.sort()
+
+        print(image_folder, "images found:", len(images))
+
+        if not images:
+            gallery_counter.innerText = "No images found"
+            return
+
+        def show_image(index):
+            nonlocal current_image
+
+            current_image = index
+            gallery_image.src = images[current_image]
+
+            gallery_counter.innerText = (
+                f"{current_image + 1} / {len(images)}"
+            )
+
+        def previous_image(event=None):
+            new_index = (current_image - 1) % len(images)
+            show_image(new_index)
+
+        def next_image(event=None):
+            new_index = (current_image + 1) % len(images)
+            show_image(new_index)
+
+        previous_button.onclick = previous_image
+        next_button.onclick = next_image
+        gallery_image.onclick = next_image
+
+        show_image(0)
+
+    except Exception as error:
+        print("Gallery error:", error)
+        gallery_counter.innerText = "Error loading images"
+
+
+async def main():
+    galleries = document.querySelectorAll(".gallery")
+
+    for gallery in galleries:
+        await setup_gallery(gallery)
+
+main()
 # ============================================================
 # Find This Gallery
 # ============================================================
