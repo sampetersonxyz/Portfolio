@@ -65,10 +65,6 @@
       font-weight: 600;
     }
     #micCanvas {
-      /* width: clamp(30%, 50%,  80%);
-      aspect-ratio: 1/1;
-      height: auto;
-      display: block; */
       width: min(40vw, 400px);
       height: min(40vw, 400px);
       display: block;
@@ -107,20 +103,23 @@
 
     transition: 0.2s;
   }
-
   .gallery-button:hover {
       transform: scale(1.2);
   }
   .dynamic-button {
-      padding: 15px 30px;
-      font-size: 20px;
-      font-weight: bold;
-      background-color: #000000;
-      border: 2px solid #00ffff;
-      border-radius: 8px;
-      cursor: pointer;
+    padding: 15px 30px;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: var(--button-bg, #000000);
+    color: var(--button-text, #ffffff);
+    border: 2px solid var(--button-color, #00ffff);
+    border-radius: 8px;
+    cursor: pointer;
   }
-
+  .dynamic-button:hover {
+    background-color: var(--button-color, #00ffff);
+    color: var(--button-hover-text, #000000);
+  }
   .play-button:hover {
       transform: scale(1.05);
   }
@@ -131,6 +130,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap" rel="stylesheet">
 </head>
+
 <body>
   <header>
     <h1>SamPeterson.XYZ</h1>
@@ -149,6 +149,7 @@
     <br/>
     See if you can find them all!
   </p>
+
   <div class="project">
     <p>
         <span style="color: cyan;">V!s!on</span>
@@ -163,11 +164,31 @@
         <br/>
         <span style="color: orange;">//TODO: Android/Windows/iOS/Mac Release</span>
         <br/>
-        <button class="dynamic-button" onclick="window.location.href='https://petesamerson.github.io/V-s-on/'">
+        <button 
+          class="dynamic-button" 
+          onclick="window.location.href='https://petesamerson.github.io/V-s-on/'">
           Play V!s!on
         </button>
-        <button class="dynamic-button" onclick="window.location.href='https://github.com/petesamerson/V-s-on'">
+        <button 
+          class="dynamic-button" 
+          onclick="window.location.href='https://github.com/petesamerson/V-s-on'">
           In-Progress Code
+        </button>
+        <br/>
+        <br/>
+        <span style="color: #ff5555;">V!s!on Beta Downloads</span>
+        <br/>
+        <button 
+          class="dynamic-button" 
+          style="--button-color: #ff5555;"
+          onclick="window.location.href='https://github.com/petesamerson/V-s-on/releases/latest/download/V.s.on.apk'">
+          Android
+        </button>
+        <button 
+          class="dynamic-button" 
+          style="--button-color: #ff5555;"
+          onclick="window.location.href='https://github.com/petesamerson/V-s-on/releases/latest/download/V.s.on.exe'">
+          Windows
         </button>
         <br/>
     </p>
@@ -184,6 +205,7 @@
           <button class="gallery-next gallery-button">❯</button>
       </div>
   </div>
+  <script src="VisionDownloads.js" defer></script>
   <script type="py" src="Gallery.py" data-folder="images/vision"></script>
 </div>
   <p>
